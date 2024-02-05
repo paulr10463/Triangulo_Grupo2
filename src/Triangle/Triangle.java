@@ -1,4 +1,3 @@
-
 package Triangle;
 
 import java.util.logging.Level;
@@ -69,38 +68,29 @@ public class Triangle {
     }
 
     public boolean isValidTriangle() throws TriangleNotPossibleException {
-        try {
-            if (this.side1 + this.side2 > this.side3 && this.side1 + this.side3 > this.side2 && this.side2 + this.side3 > this.side1) {
-                return true;
-            } 
-            throw new TriangleNotPossibleException("The given sides do not form a valid triangle");
-        } catch (TriangleNotPossibleException e) {
-            LOGGER.log(Level.SEVERE, "Exception occur", e);
-            throw e;
+        if (this.side1 + this.side2 > this.side3 && this.side1 + this.side3 > this.side2 && this.side2 + this.side3 > this.side1) {
+            return true;
+        } else {
+            LOGGER.log(Level.SEVERE, "Los lados dados no forman un triángulo válido");
+            throw new TriangleNotPossibleException("Los lados dados no forman un triángulo válido");
         }
     }
 
     public boolean hasCeroAsValue() throws SideWithCeroAsValueException {
-        try {
-            if (this.side1 == 0 || this.side2 == 0 || this.side3 == 0) {
-                throw new SideWithCeroAsValueException("One of the sides has zero as value");
-            }
+        if (this.side1 == 0 || this.side2 == 0 || this.side3 == 0) {
+            LOGGER.log(Level.SEVERE, "Uno de los lados tiene cero como valor");
+            throw new SideWithCeroAsValueException("Uno de los lados tiene cero como valor");
+        } else {
             return false;
-        } catch (SideWithCeroAsValueException e) {
-            LOGGER.log(Level.SEVERE, "Exception occur", e);
-            throw e;
         }
     }
 
     public boolean hasNegativeValue() throws NegativaSideValuesException {
-        try {
-            if (this.side1 < 0 || this.side2 < 0 || this.side3 < 0) {
-                throw new NegativaSideValuesException("One of the sides has a negative value");
-            }
+        if (this.side1 < 0 || this.side2 < 0 || this.side3 < 0) {
+            LOGGER.log(Level.SEVERE, "Uno de los lados tiene un valor negativo");
+            throw new NegativaSideValuesException("Uno de los lados tiene un valor negativo");
+        } else {
             return false;
-        } catch (NegativaSideValuesException e) {
-            LOGGER.log(Level.SEVERE, "Exception occur", e);
-            throw e;
         }
     }
 
