@@ -16,16 +16,15 @@ public class Triangle {
     private String type;
 
     public Triangle(double side1,double side2,double side3) throws TriangleNotPossibleException, SideWithCeroAsValueException, NegativaSideValuesException {
+        this.side1 = side1;
+        this.side2 = side2;
+        this.side3 = side3;
         if (hasNegativeValue())
             throw new NegativaSideValuesException("No se permiten valores negativos");
         if (hasCeroAsValue())
             throw new SideWithCeroAsValueException("No puede tener un lado con valor 0");
         if (!isValidTriangle())
             throw new TriangleNotPossibleException("No es un triangulo valido");
-
-        this.side1 = side1;
-        this.side2 = side2;
-        this.side3 = side3;
         setType();
     }
 
